@@ -1,0 +1,7 @@
+@import "../_globalColor";
+
+.dark-mode {
+  background-color: $darkBackground;
+  color: black;
+  transition: "0.1s";
+}

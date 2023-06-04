@@ -1,9 +1,9 @@
-import React, { Suspense, useContext } from 'react';
-import './twitter.css';
-import Loading from '../loading/Loading';
-import { TwitterTimelineEmbed } from 'react-twitter-embed';
-import { twitterDetails } from '../../portfolio';
-import StyleContext from '../../contexts/StyleContext';
+import React, {Suspense, useContext} from "react";
+import "./twitter.scss";
+import Loading from "../loading/Loading";
+import {TwitterTimelineEmbed} from "react-twitter-embed";
+import {twitterDetails} from "../../portfolio";
+import StyleContext from "../../contexts/StyleContext";
 
 const renderLoader = () => <Loading />;
 const cantDisplayError =
@@ -11,18 +11,21 @@ const cantDisplayError =
 
 function timeOut() {
   setTimeout(function () {
-    if (!document.getElementById('twitter').innerHTML.includes('iframe')) {
-      document.getElementById('twitter').innerHTML = cantDisplayError;
+    if (!document.getElementById("twitter").innerHTML.includes("iframe")) {
+      document.getElementById("twitter").innerHTML = cantDisplayError;
     }
   }, 10000);
 }
 var widthScreen = window.screen.width;
 
 export default function Twitter() {
-  const { isDark } = useContext(StyleContext);
+  const {isDark} = useContext(StyleContext);
 
   if (!twitterDetails.display) {
     return null;
+  }
+  if (!twitterDetails.userName) {
+    console.error("Twitter username for twitter section is missing");
   }
   if (twitterDetails.userName) {
     return (
@@ -32,12 +35,12 @@ export default function Twitter() {
             <TwitterTimelineEmbed
               sourceType="profile"
               screenName={twitterDetails.userName}
-              options={{ height: 400, width: { widthScreen } }}
+              options={{height: 400, width: {widthScreen}}}
               placeholder={renderLoader()}
               autoHeight={false}
               borderColor="#fff"
-              key={isDark ? '1' : '2'}
-              theme={isDark ? 'dark' : 'light'}
+              key={isDark ? "1" : "2"}
+              theme={isDark ? "dark" : "light"}
               noFooter={true}
               onload={timeOut()}
             />
