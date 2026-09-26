@@ -5,8 +5,8 @@ import {openSource, socialMediaLinks} from "../../portfolio";
 import StyleContext from "../../contexts/StyleContext";
 import Loading from "../../containers/loading/Loading";
 export default function Projects() {
-  const GithubRepoCard = lazy(() =>
-    import("../../components/githubRepoCard/GithubRepoCard")
+  const GithubRepoCard = lazy(
+    () => import("../../components/githubRepoCard/GithubRepoCard")
   );
   const FailedLoading = () => null;
   const renderLoader = () => <Loading />;
@@ -16,7 +16,7 @@ export default function Projects() {
 
   useEffect(() => {
     const getRepoData = () => {
-      fetch("/profile.json")
+      fetch("./profile.json")
         .then(result => {
           if (result.ok) {
             return result.json();

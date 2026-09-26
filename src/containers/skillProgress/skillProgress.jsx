@@ -1,7 +1,7 @@
 import React from "react";
 import "./Progress.scss";
 import {illustration, techStack} from "../../portfolio";
-import {Fade} from "react-reveal";
+import {Fade} from "../../components/reveal/Reveal";
 import Build from "../../assets/lottie/build";
 import DisplayLottie from "../../components/displayLottie/DisplayLottie";
 
@@ -33,7 +33,9 @@ export default function StackProgress() {
             ) : (
               <img
                 alt="Skills"
-                src={require("../../assets/images/skill.svg")}
+                src={
+                  new URL("../../assets/images/skill.svg", import.meta.url).href
+                }
               />
             )}
           </div>

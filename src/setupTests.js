@@ -1,5 +1,13 @@
-import "jest-canvas-mock";
-import {configure} from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
+import "vitest-canvas-mock";
+import "@testing-library/jest-dom/vitest";
 
-configure({adapter: new Adapter()});
+// jsdom does not implement IntersectionObserver, which react-awesome-reveal uses
+class IntersectionObserverMock {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+  takeRecords() {
+    return [];
+  }
+}
+window.IntersectionObserver = IntersectionObserverMock;

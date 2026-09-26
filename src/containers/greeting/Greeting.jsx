@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import {Fade} from "react-reveal";
+import {Fade} from "../../components/reveal/Reveal";
 import emoji from "react-easy-emoji";
 import "./Greeting.scss";
 import landingPerson from "../../assets/lottie/landingPerson";
@@ -69,10 +69,15 @@ export default function Greeting() {
             </div>
           </div>
           <div className="greeting-image-div">
-              <img
-                alt="my profile photo"
-                src={require("../../assets/images/myDarkProfilePhoto.jpg")}
-              ></img>
+            <img
+              alt="my profile photo"
+              src={
+                new URL(
+                  "../../assets/images/myDarkProfilePhoto.jpg",
+                  import.meta.url
+                ).href
+              }
+            ></img>
           </div>
         </div>
       </div>

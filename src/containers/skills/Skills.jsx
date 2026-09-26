@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 import "./Skills.scss";
 import SoftwareSkill from "../../components/softwareSkills/SoftwareSkill";
 import {illustration, skillsSection} from "../../portfolio";
-import {Fade} from "react-reveal";
+import {Fade} from "../../components/reveal/Reveal";
 import codingPerson from "../../assets/lottie/codingPerson";
 import DisplayLottie from "../../components/displayLottie/DisplayLottie";
 import StyleContext from "../../contexts/StyleContext";
@@ -22,7 +22,12 @@ export default function Skills() {
             ) : (
               <img
                 alt="Man Working"
-                src={require("../../assets/images/developerActivity.svg")}
+                src={
+                  new URL(
+                    "../../assets/images/developerActivity.svg",
+                    import.meta.url
+                  ).href
+                }
               ></img>
             )}
           </div>

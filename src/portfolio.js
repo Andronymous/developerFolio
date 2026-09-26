@@ -32,8 +32,7 @@ const greeting = {
     "Also, I experienced collaboration with product managers, designers, QA engineers, and cross-functional teams to deliver high-quality products."
   ),
 
-  resumeLink:
-    "https://andronymous.ir/resume-en.pdf",
+  resumeLink: "https://andronymous.ir/resume-en.pdf",
   displayGreeting: true // Set false to hide this section, defaults to true
 };
 
@@ -53,23 +52,16 @@ const socialMediaLinks = {
 
 const skillsSection = {
   title: "Proficiency",
-  subTitle: "During the last 12 years, I have gained sufficient skills in using these tools and languages:",
+  subTitle:
+    "During the last 12 years, I have gained sufficient skills in using these tools and languages:",
   skills: [
-    emoji(
-      "✅ With these experiences I can help you in:"
-    ),
-    emoji(
-      "⚡ Manage your Projects With Flexibility and Agility."
-    ),
+    emoji("✅ With these experiences I can help you in:"),
+    emoji("⚡ Manage your Projects With Flexibility and Agility."),
     emoji(
       "⚡ Improve your Software Infrastructure and Operations to Streamline Software Delivery."
     ),
-    emoji(
-      "⚡ Foster Collaboration and  Improve Efficiency in your Team."
-    ),
-    emoji(
-      "⚡ And ..."
-    )
+    emoji("⚡ Foster Collaboration and  Improve Efficiency in your Team."),
+    emoji("⚡ And ...")
   ],
 
   /* Make Sure to include correct Font Awesome Classname to view your icon
@@ -163,13 +155,15 @@ const educationInfo = {
   schools: [
     {
       schoolName: "SheikhBahaeei University",
-      logo: require("./assets/images/SheikhBahaeiUniversityLogo.png"),
+      logo: new URL(
+        "./assets/images/SheikhBahaeiUniversityLogo.png",
+        import.meta.url
+      ).href,
       subHeader: "Bachelor of Information Technology",
       duration: "2011 - 2016",
       desc: "",
-      descBullets: [
-      ]
-    },
+      descBullets: []
+    }
   ]
 };
 
@@ -254,30 +248,29 @@ const workExperiences = {
     {
       role: "Infrastructure Team Lead",
       company: "Zamin",
-      companylogo: require("./assets/images/zamin.png"),
+      companylogo: new URL("./assets/images/zamin.png", import.meta.url).href,
       date: "Feb 2022 - Present . +1 yrs",
       desc: "",
-      descBullets: [
-      ]
+      descBullets: []
     },
     {
       role: "Senior Android Developer",
       company: "Zamin",
-      companylogo: require("./assets/images/zamin.png"),
+      companylogo: new URL("./assets/images/zamin.png", import.meta.url).href,
       date: "Dec 2017 - Feb 2022 · 4 yrs 3 mos",
       desc: ""
     },
     {
       role: "Co-Founder and Senior Android Developer",
       company: "Armin",
-      companylogo: require("./assets/images/armin.png"),
+      companylogo: new URL("./assets/images/armin.png", import.meta.url).href,
       date: "Sep 2016 - Dec 2017 · 1 yr 4 mos",
       desc: ""
     },
     {
       role: "Android Developer",
       company: "Arad",
-      companylogo: require("./assets/images/arad.png"),
+      companylogo: new URL("./assets/images/arad.png", import.meta.url).href,
       date: "Feb 2016 - Jun 2016 · 5 mos",
       desc: ""
     }
@@ -296,10 +289,11 @@ const openSource = {
 
 const bigProjects = {
   title: "Projects",
-  subtitle: "Some of the projects that I did independently or was part of the development team",
+  subtitle:
+    "Some of the projects that I did independently or was part of the development team",
   projects: [
     {
-      image: require("./assets/images/balonet.png"),
+      image: new URL("./assets/images/balonet.png", import.meta.url).href,
       projectName: "Balonet",
       projectDesc: "",
       footerLink: [
@@ -311,7 +305,7 @@ const bigProjects = {
       ]
     },
     {
-      image: require("./assets/images/noonet.png"),
+      image: new URL("./assets/images/noonet.png", import.meta.url).href,
       projectName: "Noonet",
       projectDesc: "",
       footerLink: [
@@ -322,7 +316,7 @@ const bigProjects = {
       ]
     },
     {
-      image: require("./assets/images/ipeyk.png"),
+      image: new URL("./assets/images/ipeyk.png", import.meta.url).href,
       projectName: "Ipeyk",
       projectDesc: "",
       footerLink: [
@@ -333,16 +327,17 @@ const bigProjects = {
       ]
     },
     {
-     image: require("./assets/images/alchemist.png"),
-     projectName: "Alchemist",
-     projectDesc: "",
+      image: new URL("./assets/images/alchemist.png", import.meta.url).href,
+      projectName: "Alchemist",
+      projectDesc: ""
     },
     {
-      image: require("./assets/images/arian.png"),
+      image: new URL("./assets/images/arian.png", import.meta.url).href,
       projectName: "Arian",
-      projectDesc: "",
-    },{
-      image: require("./assets/images/ranandesho.png"),
+      projectDesc: ""
+    },
+    {
+      image: new URL("./assets/images/ranandesho.png", import.meta.url).href,
       projectName: "Ranandesho",
       projectDesc: "",
       footerLink: [
@@ -353,12 +348,12 @@ const bigProjects = {
       ]
     },
     {
-      image: require("./assets/images/sib.png"),
+      image: new URL("./assets/images/sib.png", import.meta.url).href,
       projectName: "Sib",
-      projectDesc: "",
+      projectDesc: ""
     },
     {
-      image: require("./assets/images/zabdar.png"),
+      image: new URL("./assets/images/zabdar.png", import.meta.url).href,
       projectName: "Zabdar",
       projectDesc: "",
       footerLink: [
@@ -385,7 +380,7 @@ const achievementSection = {
       title: "Google Code-In Finalist",
       subtitle:
         "First Pakistani to be selected as Google Code-in Finalist from 4000 students from 77 different countries.",
-      image: require("./assets/images/codeInLogo.webp"),
+      image: new URL("./assets/images/codeInLogo.webp", import.meta.url).href,
       imageAlt: "Google Code-In Logo",
       footerLink: [
         {
@@ -406,7 +401,10 @@ const achievementSection = {
       title: "Google Assistant Action",
       subtitle:
         "Developed a Google Assistant Action JavaScript Guru that is available on 2 Billion devices world wide.",
-      image: require("./assets/images/googleAssistantLogo.webp"),
+      image: new URL(
+        "./assets/images/googleAssistantLogo.webp",
+        import.meta.url
+      ).href,
       imageAlt: "Google Assistant Action Logo",
       footerLink: [
         {
@@ -419,7 +417,7 @@ const achievementSection = {
     {
       title: "PWA Web App Developer",
       subtitle: "Completed Certifcation from SMIT for PWA Web App Development",
-      image: require("./assets/images/pwaLogo.webp"),
+      image: new URL("./assets/images/pwaLogo.webp", import.meta.url).href,
       imageAlt: "PWA Logo",
       footerLink: [
         {name: "Certification", url: ""},
@@ -491,8 +489,7 @@ const podcastSection = {
 
 const contactInfo = {
   title: emoji("Contact Me ☎️"),
-  subtitleName:
-      "Saeed Mohammad ali rajab ",
+  subtitleName: "Saeed Mohammad ali rajab ",
   subtitle:
     "Discuss a project or just want to say hi? My Inbox is open for all. 😊",
   number: "+98-9138934809",

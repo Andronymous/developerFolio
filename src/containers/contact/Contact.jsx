@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 import "./Contact.scss";
 import SocialMedia from "../../components/socialMedia/SocialMedia";
 import {illustration, contactInfo} from "../../portfolio";
-import {Fade} from "react-reveal";
+import {Fade} from "../../components/reveal/Reveal";
 import email from "../../assets/lottie/email";
 import DisplayLottie from "../../components/displayLottie/DisplayLottie";
 import StyleContext from "../../contexts/StyleContext";
@@ -15,7 +15,9 @@ export default function Contact() {
         <div className="contact-div-main">
           <div className="contact-header">
             <h1 className="heading contact-title">{contactInfo.title}</h1>
-            <h2 className="heading contact-title">{contactInfo.subtitleName}</h2>
+            <h2 className="heading contact-title">
+              {contactInfo.subtitleName}
+            </h2>
             <p
               className={
                 isDark
@@ -59,7 +61,12 @@ export default function Contact() {
             ) : (
               <img
                 alt="Man working"
-                src={require("../../assets/images/contactMailDark.svg")}
+                src={
+                  new URL(
+                    "../../assets/images/contactMailDark.svg",
+                    import.meta.url
+                  ).href
+                }
               ></img>
             )}
           </div>
