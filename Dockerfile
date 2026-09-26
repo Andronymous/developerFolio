@@ -1,9 +1,9 @@
-# This file is the main docker file configurations
+# Production image: build the static site with Node, then serve it with SWAG
+# (nginx + Let's Encrypt certificates obtained and renewed automatically).
 
-# Official Node JS runtime as a parent image
-FROM node:24-alpine
+# ---- Build stage ----
+FROM node:24-alpine AS build
 
-# Set the working directory to ./app
 WORKDIR /app
 
 RUN apk add --no-cache git
@@ -12,11 +12,16 @@ RUN apk add --no-cache git
 COPY package.json package-lock.json ./
 RUN npm ci
 
-# Bundle app source
-COPY . /app
+COPY . .
+RUN npm run build
 
-# Make port 3000 available to the world outside this container
-EXPOSE 3000
+# ---- Runtime stage ----
+FROM lscr.io/linuxserver/swag:latest
 
-# Run app.js when the container launches
-CMD ["npm", "start"]
+# /config is a volume (it holds the certificates), so the site is baked in
+# here and copied into /config/www by the init script on every start.
+COPY --from=build /app/build /app/site
+COPY docker/custom-cont-init.d/ /custom-cont-init.d/
+RUN chmod 755 /custom-cont-init.d/*
+
+EXPOSE 80 443
