@@ -11,6 +11,8 @@ const MEDIUM_USERNAME = process.env.MEDIUM_USERNAME;
 const ERR = {
   noUserName:
     "Github Username was found to be undefined. Please set all relevant environment variables.",
+  noToken:
+    "Github token was found to be undefined. Please set REACT_APP_GITHUB_TOKEN in your .env file.",
   requestFailed:
     "The request to GitHub didn't succeed. Check if GitHub token in your .env file is correct.",
   requestFailedMedium:
@@ -19,6 +21,9 @@ const ERR = {
 if (USE_GITHUB_DATA === "true") {
   if (GITHUB_USERNAME === undefined) {
     throw new Error(ERR.noUserName);
+  }
+  if (!GITHUB_TOKEN) {
+    throw new Error(ERR.noToken);
   }
 
   console.log(`Fetching profile data for ${GITHUB_USERNAME}`);
@@ -72,7 +77,10 @@ if (USE_GITHUB_DATA === "true") {
 
     console.log(`statusCode: ${res.statusCode}`);
     if (res.statusCode !== 200) {
-      throw new Error(ERR.requestFailed);
+      console.error(ERR.requestFailed);
+      process.exitCode = 1;
+      res.resume();
+      return;
     }
 
     res.on("data", d => {
@@ -87,7 +95,8 @@ if (USE_GITHUB_DATA === "true") {
   });
 
   req.on("error", error => {
-    throw error;
+    console.error(error);
+    process.exitCode = 1;
   });
 
   req.write(data);
@@ -108,7 +117,10 @@ if (MEDIUM_USERNAME !== undefined) {
 
     console.log(`statusCode: ${res.statusCode}`);
     if (res.statusCode !== 200) {
-      throw new Error(ERR.requestMediumFailed);
+      console.error(ERR.requestFailedMedium);
+      process.exitCode = 1;
+      res.resume();
+      return;
     }
 
     res.on("data", d => {
@@ -123,7 +135,8 @@ if (MEDIUM_USERNAME !== undefined) {
   });
 
   req.on("error", error => {
-    throw error;
+    console.error(error);
+    process.exitCode = 1;
   });
 
   req.end();

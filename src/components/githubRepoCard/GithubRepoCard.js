@@ -10,7 +10,7 @@ export default function GithubRepoCard({repo, isDark}) {
       return;
     }
     var win = window.open(url, "_blank");
-    win.focus();
+    if (win) win.focus();
   }
 
   return (

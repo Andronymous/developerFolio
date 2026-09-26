@@ -10,7 +10,7 @@ export default function StartupProject() {
       return;
     }
     var win = window.open(url, "_blank");
-    win.focus();
+    if (win) win.focus();
   }
 
   const {isDark} = useContext(StyleContext);
