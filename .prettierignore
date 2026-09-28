@@ -1,0 +1,5 @@
+# Exported Lottie animation data, not hand-written code
+src/assets/lottie/
+
+# Intentionally unfinished; kept for a planned dark-mode-only header
+src/components/header/Header.js
