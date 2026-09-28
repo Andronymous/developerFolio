@@ -1,31 +1,87 @@
 @import "../../_globalColor";
 
+.skill-group {
+  margin-bottom: 24px;
+}
+
+.skill-group-title {
+  margin: 0 0 12px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $subTitle;
+}
+
 .dev-icons {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
+  gap: 16px 12px;
   padding-left: 0;
+  margin: 0;
   list-style: none;
-  font-size: 4rem;
-  margin-bottom: 0px;
-  margin-top: 0px;
-  text-align: center;
 }
 
 .software-skill-inline {
-  display: inline-block;
-  margin-right: 20px;
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-.software-skill-inline > i {
-  color: $subTitle;
+.software-skill-icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  color: $skillIconColor;
+  transition: color 0.2s ease;
 }
 
-.software-skill-inline > i:hover {
-  color: $skillsColor;
-}
 .software-skill-inline > p {
+  margin: 8px 0 0;
   color: $subTitle;
-  font-size: 15px;
+  font-size: 13px;
+  line-height: 1.3;
+  transition: color 0.2s ease;
 }
-.software-skill-inline > i:hover ~ p {
-  color: $skillsColor;
+
+.software-skill-inline:hover {
+  .software-skill-icon,
+  p {
+    color: $skillIconHover;
+  }
+}
+
+.dark-mode {
+  .skill-group-title {
+    color: $textColorDark;
+  }
+  .software-skill-icon {
+    color: $skillIconColorDark;
+  }
+  .software-skill-inline > p {
+    color: $skillLabelDark;
+  }
+  .software-skill-inline:hover {
+    .software-skill-icon,
+    p {
+      color: $skillIconHoverDark;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .skill-group-title {
+    text-align: center;
+  }
+  .dev-icons {
+    grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
+    gap: 14px 8px;
+  }
+  .software-skill-icon {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+  .software-skill-inline > p {
+    font-size: 12px;
+  }
 }

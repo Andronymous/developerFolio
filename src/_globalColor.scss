@@ -75,6 +75,13 @@ $appHeaderBG: #282c34;
 
 // misc colors
 $skillsColor: #645beb;
+
+// skill icons (light theme, then dark theme; dark values keep >= 6:1 contrast)
+$skillIconColor: $buttonColor;
+$skillIconHover: $buttonHover;
+$skillIconColorDark: #b794f4;
+$skillIconHoverDark: #d6bcfa;
+$skillLabelDark: #c4c9d0;
 $appLink: #09d3ac;
 
 // social media icons

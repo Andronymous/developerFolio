@@ -3,6 +3,43 @@
 // To change portfolio colors globally go to the  _globalColor.scss file
 
 import emoji from "react-easy-emoji";
+import {
+  SiAndroid,
+  SiAnsible,
+  SiArgo,
+  SiContainerd,
+  SiDocker,
+  SiGit,
+  SiGitlab,
+  SiGnubash,
+  SiGrafana,
+  SiHelm,
+  SiIstio,
+  SiJenkins,
+  SiKotlin,
+  SiKubernetes,
+  SiKubespray,
+  SiLinux,
+  SiMongodb,
+  SiNginx,
+  SiOpenjdk,
+  SiPostgresql,
+  SiPrometheus,
+  SiPython,
+  SiRedhatopenshift,
+  SiSonarqubeserver,
+  SiSonatype,
+  SiVmware,
+  SiYaml
+} from "react-icons/si";
+import {
+  TbCertificate,
+  TbGitMerge,
+  TbLoadBalancer,
+  TbRepeat,
+  TbShieldSearch,
+  TbWorldWww
+} from "react-icons/tb";
 import splashAnimation from "./assets/lottie/splashAnimation"; // Rename to your file name for custom animation
 
 // Month range with a LinkedIn-style duration, counting both the first and the
@@ -100,85 +137,85 @@ const skillsSection = {
     )
   ],
 
-  /* Make Sure to include correct Font Awesome Classname to view your icon
-https://fontawesome.com/icons?d=gallery */
-
+  /* Skills grouped under small headings. Icons are Simple Icons brand logos
+  (react-icons/si); concepts without a brand logo use Tabler outline icons
+  (react-icons/tb), or the parent project's logo where that is accurate. */
   softwareSkills: [
     {
-      skillName: "Linux Admin",
-      fontAwesomeClassname: "fab fa-linux"
+      group: "Linux & Scripting",
+      skills: [
+        {name: "Linux Administration", icon: SiLinux},
+        {name: "Bash / Shell Scripting", icon: SiGnubash},
+        {name: "Python", icon: SiPython},
+        {name: "YAML", icon: SiYaml}
+      ]
     },
     {
-      skillName: "Docker",
-      fontAwesomeClassname: "fab fa-docker"
+      group: "Containers & Orchestration",
+      skills: [
+        {name: "Docker", icon: SiDocker},
+        {name: "Containerd", icon: SiContainerd},
+        {name: "Kubernetes", icon: SiKubernetes},
+        {name: "OpenShift", icon: SiRedhatopenshift},
+        {name: "Kubespray", icon: SiKubespray},
+        {name: "Helm", icon: SiHelm},
+        {name: "Istio Service Mesh", icon: SiIstio}
+      ]
     },
     {
-      skillName: "Kubernetes",
-      fontAwesomeClassname: "fa fa-dharmachakra"
+      group: "CI/CD & Automation",
+      skills: [
+        {name: "Git", icon: SiGit},
+        {name: "GitLab", icon: SiGitlab},
+        {name: "GitLab CI/CD", icon: SiGitlab},
+        {name: "Jenkins", icon: SiJenkins},
+        {name: "Argo CD", icon: SiArgo},
+        {name: "GitOps", icon: TbGitMerge},
+        {name: "Ansible", icon: SiAnsible}
+      ]
     },
     {
-      skillName: "OpenShift",
-      fontAwesomeClassname: "fab fa-redhat"
+      group: "Observability",
+      skills: [
+        {name: "Prometheus", icon: SiPrometheus},
+        {name: "Grafana", icon: SiGrafana},
+        {name: "Alertmanager", icon: SiPrometheus}, // part of Prometheus
+        {name: "Loki", icon: SiGrafana} // by Grafana Labs
+      ]
     },
     {
-      skillName: "Shell Scripting",
-      fontAwesomeClassname: "fa fa-code"
+      group: "Security & Code Quality",
+      skills: [
+        {name: "SonarQube", icon: SiSonarqubeserver},
+        {name: "Semgrep", icon: TbShieldSearch},
+        {name: "SSL/TLS", icon: TbCertificate}
+      ]
     },
     {
-      skillName: "Jenkins",
-      fontAwesomeClassname: "fab fa-jenkins"
+      group: "Networking & Web",
+      skills: [
+        {name: "Nginx", icon: SiNginx},
+        {name: "HAProxy", icon: TbLoadBalancer},
+        {name: "DNS", icon: TbWorldWww}
+      ]
     },
     {
-      skillName: "GitLab",
-      fontAwesomeClassname: "fab fa-gitlab"
+      group: "Data & Infrastructure",
+      skills: [
+        {name: "PostgreSQL", icon: SiPostgresql},
+        {name: "MongoDB", icon: SiMongodb},
+        {name: "Nexus Repository Manager", icon: SiSonatype}, // by Sonatype
+        {name: "VMware vCenter", icon: SiVmware}
+      ]
     },
     {
-      skillName: "Prometheus",
-      fontAwesomeClassname: "fas fa-fire-alt"
-    },
-    {
-      skillName: "Grafana",
-      fontAwesomeClassname: "fa fa-sun"
-    },
-    {
-      skillName: "Nexus RM",
-      fontAwesomeClassname: "fa fa-database"
-    },
-    {
-      skillName: "HAProxy",
-      fontAwesomeClassname: "fa fa-globe"
-    },
-    {
-      skillName: "Nginx",
-      fontAwesomeClassname: "fab fa-neos"
-    },
-    {
-      skillName: "Security",
-      fontAwesomeClassname: "fa fa-user-secret"
-    },
-    {
-      skillName: "Python",
-      fontAwesomeClassname: "fab fa-python"
-    },
-    {
-      skillName: "Android",
-      fontAwesomeClassname: "fab fa-android"
-    },
-    {
-      skillName: "Java",
-      fontAwesomeClassname: "fab fa-java"
-    },
-    {
-      skillName: "Kotlin",
-      fontAwesomeClassname: "fab fa-kickstarter-k"
-    },
-    {
-      skillName: "Git",
-      fontAwesomeClassname: "fab fa-git"
-    },
-    {
-      skillName: "Scrum Methodology",
-      fontAwesomeClassname: "fa fa-rocket"
+      group: "Development & Process",
+      skills: [
+        {name: "Android", icon: SiAndroid},
+        {name: "Java", icon: SiOpenjdk}, // Simple Icons has no Java logo
+        {name: "Kotlin", icon: SiKotlin},
+        {name: "Scrum / Agile", icon: TbRepeat}
+      ]
     }
   ],
   display: true // Set false to hide this section, defaults to true
