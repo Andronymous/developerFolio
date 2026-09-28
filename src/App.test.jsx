@@ -16,10 +16,15 @@ Object.defineProperty(window, "matchMedia", {
   }))
 });
 
-// The app fetches ./profile.json and ./blogs.json; simulate them being absent
 window.fetch = vi.fn(() => Promise.resolve({ok: false}));
 
 it("renders without crashing", () => {
   const {unmount} = render(<App />);
+  unmount();
+});
+
+it("does not fetch data for disabled sections", () => {
+  const {unmount} = render(<App />);
+  expect(window.fetch).not.toHaveBeenCalled();
   unmount();
 });

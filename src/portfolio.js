@@ -294,7 +294,8 @@ const workExperiences = {
 };
 
 /* Your Open Source Section to View Your Github Pinned Projects
-To know how to get github key look at readme.md */
+Needs public/profile.json, which the template's fetch.js generated from the
+GitHub API (removed; restore it from git history before enabling this) */
 
 const openSource = {
   showGithubProfile: "true", // Set true or false to show Contact profile using Github, defaults to true
@@ -401,7 +402,7 @@ const blogSection = {
   title: "Blogs",
   subtitle:
     "With Love for Developing cool stuff, I love to write and teach others what I have learnt.",
-  displayMediumBlogs: "true", // Set true to display fetched medium blogs instead of hardcoded ones
+  displayMediumBlogs: "false", // Set true to display Medium blogs from public/blogs.json instead of hardcoded ones
   blogs: [],
   display: false // Set false to hide this section, defaults to true
 };
@@ -438,13 +439,6 @@ const contactInfo = {
   email_address: "saeedmrdev@gmail.com"
 };
 
-// Twitter Section
-
-const twitterDetails = {
-  userName: "twitter", //Replace "twitter" with your twitter username without @
-  display: false // Set true to display this section, defaults to false
-};
-
 const isHireable = false; // Set false if you are not looking for a job. Also isHireable will be display as Open for opportunities: Yes/No in the GitHub footer
 
 export {
@@ -463,6 +457,5 @@ export {
   talkSection,
   podcastSection,
   contactInfo,
-  twitterDetails,
   isHireable
 };
