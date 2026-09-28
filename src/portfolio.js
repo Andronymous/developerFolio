@@ -5,6 +5,22 @@
 import emoji from "react-easy-emoji";
 import splashAnimation from "./assets/lottie/splashAnimation"; // Rename to your file name for custom animation
 
+// Returns "Mon YYYY - Present · X yrs Y mos", measured from the start month to
+// the current date so an ongoing role's duration never goes stale
+function sinceDate(year, month) {
+  const now = new Date();
+  const total = (now.getFullYear() - year) * 12 + (now.getMonth() + 1 - month);
+  const years = Math.floor(total / 12);
+  const months = total % 12;
+  const parts = [];
+  if (years > 0) parts.push(`${years} ${years === 1 ? "yr" : "yrs"}`);
+  if (months > 0) parts.push(`${months} ${months === 1 ? "mo" : "mos"}`);
+  const start = new Date(year, month - 1).toLocaleString("en-US", {
+    month: "short"
+  });
+  return `${start} ${year} - Present · ${parts.join(" ") || "1 mo"}`;
+}
+
 // Splash Screen
 
 const splashScreen = {
@@ -26,10 +42,10 @@ const greeting = {
     "I'm a DevOps engineer with a strong background in Android development."
   ),
   subTitle2: emoji(
-    "I'm Proficient in Linux Administration, Docker, Kubernetes, Openshift, and Jenkins, and I have skills in Java, Kotlin, Android SDK, Git, and some other development tools in the background."
+    "I'm proficient in Linux administration, Docker, Kubernetes, OpenShift, and Jenkins, and I also have a background in Java, Kotlin, the Android SDK, Git, and other development tools."
   ),
   subTitle3: emoji(
-    "Also, I experienced collaboration with product managers, designers, QA engineers, and cross-functional teams to deliver high-quality products."
+    "I've also collaborated with product managers, designers, QA engineers, and cross-functional teams to deliver high-quality products."
   ),
 
   resumeLink: "https://andronymous.ir/resume-en.pdf",
@@ -53,15 +69,15 @@ const socialMediaLinks = {
 const skillsSection = {
   title: "Proficiency",
   subTitle:
-    "During the last 12 years, I have gained sufficient skills in using these tools and languages:",
+    "Over the last 12 years, I have built solid skills with these tools and languages:",
   skills: [
-    emoji("✅ With these experiences I can help you in:"),
-    emoji("⚡ Manage your Projects With Flexibility and Agility."),
+    emoji("✅ With this experience, I can help you:"),
+    emoji("⚡ Manage your projects with flexibility and agility."),
     emoji(
-      "⚡ Improve your Software Infrastructure and Operations to Streamline Software Delivery."
+      "⚡ Improve your software infrastructure and operations to streamline delivery."
     ),
-    emoji("⚡ Foster Collaboration and  Improve Efficiency in your Team."),
-    emoji("⚡ And ...")
+    emoji("⚡ Foster collaboration and improve efficiency in your team."),
+    emoji("⚡ And more...")
   ],
 
   /* Make Sure to include correct Font Awesome Classname to view your icon
@@ -69,7 +85,7 @@ https://fontawesome.com/icons?d=gallery */
 
   softwareSkills: [
     {
-      skillName: "Linux Adm",
+      skillName: "Linux Admin",
       fontAwesomeClassname: "fab fa-linux"
     },
     {
@@ -81,7 +97,7 @@ https://fontawesome.com/icons?d=gallery */
       fontAwesomeClassname: "fa fa-dharmachakra"
     },
     {
-      skillName: "Openshift",
+      skillName: "OpenShift",
       fontAwesomeClassname: "fab fa-redhat"
     },
     {
@@ -93,7 +109,7 @@ https://fontawesome.com/icons?d=gallery */
       fontAwesomeClassname: "fab fa-jenkins"
     },
     {
-      skillName: "Gitlab",
+      skillName: "GitLab",
       fontAwesomeClassname: "fab fa-gitlab"
     },
     {
@@ -121,7 +137,7 @@ https://fontawesome.com/icons?d=gallery */
       fontAwesomeClassname: "fa fa-user-secret"
     },
     {
-      skillName: "Pthon",
+      skillName: "Python",
       fontAwesomeClassname: "fab fa-python"
     },
     {
@@ -249,7 +265,7 @@ const workExperiences = {
       role: "Infrastructure Team Lead",
       company: "Zamin",
       companylogo: new URL("./assets/images/zamin.png", import.meta.url).href,
-      date: "Feb 2022 - Present . +1 yrs",
+      date: sinceDate(2022, 2),
       desc: "",
       descBullets: []
     },
@@ -489,7 +505,7 @@ const podcastSection = {
 
 const contactInfo = {
   title: emoji("Contact Me ☎️"),
-  subtitleName: "Saeed Mohammad ali rajab ",
+  subtitleName: "Saeed Mohammad Ali Rajab",
   subtitle:
     "Discuss a project or just want to say hi? My Inbox is open for all. 😊",
   number: "+98-9138934809",
