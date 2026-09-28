@@ -1,0 +1,14 @@
+# Portfolio site. Reachable only through the SWAG reverse proxy on the
+# external "proxy" network (create it once with: docker network create proxy).
+services:
+  portfolio:
+    image: hub.andronymous.ir/devfolio:1.0.2
+    build: .
+    container_name: portfolio
+    networks:
+      - proxy
+    restart: unless-stopped
+
+networks:
+  proxy:
+    external: true

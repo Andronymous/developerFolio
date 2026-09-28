@@ -1,5 +1,5 @@
-# Production image: build the static site with Node, then serve it with SWAG
-# (nginx + Let's Encrypt certificates obtained and renewed automatically).
+# Production image: build the static site with Node, then serve it with nginx.
+# TLS and the public domain are handled by a separate SWAG reverse proxy.
 
 # ---- Build stage ----
 FROM node:24-alpine AS build
@@ -16,12 +16,9 @@ COPY . .
 RUN npm run build
 
 # ---- Runtime stage ----
-FROM lscr.io/linuxserver/swag:latest
+FROM nginx:stable-alpine
 
-# /config is a volume (it holds the certificates), so the site is baked in
-# here and copied into /config/www by the init script on every start.
-COPY --from=build /app/build /app/site
-COPY docker/custom-cont-init.d/ /custom-cont-init.d/
-RUN chmod 755 /custom-cont-init.d/*
+COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /app/build /usr/share/nginx/html
 
-EXPOSE 80 443
+EXPOSE 80
