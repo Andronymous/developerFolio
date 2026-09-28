@@ -5,20 +5,32 @@
 import emoji from "react-easy-emoji";
 import splashAnimation from "./assets/lottie/splashAnimation"; // Rename to your file name for custom animation
 
-// Returns "Mon YYYY - Present · X yrs Y mos", measured from the start month to
-// the current date so an ongoing role's duration never goes stale
-function sinceDate(year, month) {
+// Month range with a LinkedIn-style duration, counting both the first and the
+// last month, e.g. "Dec 2017 - Feb 2022 · 4 yrs 3 mos". Without an end month the
+// range runs to the current month and ends in "Present", so it never goes stale.
+function dateRange([startYear, startMonth], end) {
   const now = new Date();
-  const total = (now.getFullYear() - year) * 12 + (now.getMonth() + 1 - month);
+  const [endYear, endMonth] = end || [now.getFullYear(), now.getMonth() + 1];
+  const total = (endYear - startYear) * 12 + (endMonth - startMonth) + 1;
   const years = Math.floor(total / 12);
   const months = total % 12;
   const parts = [];
   if (years > 0) parts.push(`${years} ${years === 1 ? "yr" : "yrs"}`);
   if (months > 0) parts.push(`${months} ${months === 1 ? "mo" : "mos"}`);
-  const start = new Date(year, month - 1).toLocaleString("en-US", {
-    month: "short"
-  });
-  return `${start} ${year} - Present · ${parts.join(" ") || "1 mo"}`;
+  const monthName = (year, month) =>
+    new Date(year, month - 1).toLocaleString("en-US", {month: "short"}) +
+    ` ${year}`;
+  const endLabel = end ? monthName(endYear, endMonth) : "Present";
+  return `${monthName(startYear, startMonth)} - ${endLabel} · ${parts.join(" ")}`;
+}
+
+// Whole years since the given date, recomputed on every page load
+function yearsSince(year, month, day) {
+  const now = new Date();
+  const hadAnniversary =
+    now.getMonth() + 1 > month ||
+    (now.getMonth() + 1 === month && now.getDate() >= day);
+  return now.getFullYear() - year - (hadAnniversary ? 0 : 1);
 }
 
 // Splash Screen
@@ -37,15 +49,15 @@ const illustration = {
 
 const greeting = {
   username: "Saeed",
-  title: "Hi, I'm Saeed",
+  title: "Hi, I'm Saeed", // Greeting.jsx appends an animated 👋
   subTitle1: emoji(
-    "I'm a DevOps engineer with a strong background in Android development."
+    "I'm a Senior DevOps Engineer with a background in Android development."
   ),
   subTitle2: emoji(
-    "I'm proficient in Linux administration, Docker, Kubernetes, OpenShift, and Jenkins, and I also have a background in Java, Kotlin, the Android SDK, Git, and other development tools."
+    "I build and run the systems that take software from a commit to production reliably: Linux servers, containers on Docker and Kubernetes, CI/CD pipelines, and the monitoring that keeps it all healthy."
   ),
   subTitle3: emoji(
-    "I've also collaborated with product managers, designers, QA engineers, and cross-functional teams to deliver high-quality products."
+    "Having spent years on the developer side, I know what teams need from their platform. I enjoy working closely with developers, designers, QA and product managers to ship things people actually use."
   ),
 
   resumeLink: "https://andronymous.ir/resume-en.pdf",
@@ -68,16 +80,24 @@ const socialMediaLinks = {
 
 const skillsSection = {
   title: "Proficiency",
-  subTitle:
-    "Over the last 12 years, I have built solid skills with these tools and languages:",
+  subTitle: `Over the last ${yearsSince(2020, 5, 21)} years, I have built solid skills with these tools and languages:`,
   skills: [
-    emoji("✅ With this experience, I can help you:"),
-    emoji("⚡ Manage your projects with flexibility and agility."),
+    emoji("✅ What I can help with:"),
     emoji(
-      "⚡ Improve your software infrastructure and operations to streamline delivery."
+      "⚡ Designing and running reliable infrastructure environments, from Linux servers to production Kubernetes clusters"
     ),
-    emoji("⚡ Foster collaboration and improve efficiency in your team."),
-    emoji("⚡ And more...")
+    emoji(
+      "⚡ Building CI/CD and GitOps pipelines that make releases fast, repeatable and easy to roll back"
+    ),
+    emoji(
+      "⚡ Setting up monitoring, logging and alerting so problems surface before users notice them"
+    ),
+    emoji(
+      "⚡ Adding code quality and security checks into the delivery pipeline"
+    ),
+    emoji(
+      "⚡ Bridging development and operations, backed by years of hands-on app development"
+    )
   ],
 
   /* Make Sure to include correct Font Awesome Classname to view your icon
@@ -262,10 +282,18 @@ const workExperiences = {
   display: true, //Set it to true to show workExperiences Section
   experience: [
     {
+      role: "Senior DevOps Engineer",
+      company: "Acctech Technology",
+      companylogo: new URL("./assets/images/acctech.png", import.meta.url).href,
+      date: dateRange([2025, 6]),
+      desc: "",
+      descBullets: []
+    },
+    {
       role: "Infrastructure Team Lead",
       company: "Zamin",
       companylogo: new URL("./assets/images/zamin.png", import.meta.url).href,
-      date: sinceDate(2022, 2),
+      date: dateRange([2022, 2], [2025, 6]),
       desc: "",
       descBullets: []
     },
@@ -273,21 +301,21 @@ const workExperiences = {
       role: "Senior Android Developer",
       company: "Zamin",
       companylogo: new URL("./assets/images/zamin.png", import.meta.url).href,
-      date: "Dec 2017 - Feb 2022 · 4 yrs 3 mos",
+      date: dateRange([2017, 12], [2022, 2]),
       desc: ""
     },
     {
       role: "Co-Founder and Senior Android Developer",
       company: "Armin",
       companylogo: new URL("./assets/images/armin.png", import.meta.url).href,
-      date: "Sep 2016 - Dec 2017 · 1 yr 4 mos",
+      date: dateRange([2016, 9], [2017, 12]),
       desc: ""
     },
     {
       role: "Android Developer",
       company: "Arad",
       companylogo: new URL("./assets/images/arad.png", import.meta.url).href,
-      date: "Feb 2016 - Jun 2016 · 5 mos",
+      date: dateRange([2016, 2], [2016, 6]),
       desc: ""
     }
   ]
