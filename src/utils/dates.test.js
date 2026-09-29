@@ -1,4 +1,7 @@
-import {dateRange} from "./dates";
+import {dateRange as rawDateRange} from "./dates";
+
+// The output uses non-breaking spaces; compare it as plain text
+const dateRange = (...args) => rawDateRange(...args).replace(/\u00a0/g, " ");
 
 afterEach(() => {
   vi.useRealTimers();
@@ -27,6 +30,12 @@ describe("dateRange", () => {
     );
     expect(dateRange([2025, 6, 22], [2026, 6, 21])).toBe(
       "Jun 2025 - Jun 2026 · 1 yr"
+    );
+  });
+
+  it("only allows line breaks around the separators", () => {
+    expect(rawDateRange([2022, 1, 21], [2025, 6, 21])).toBe(
+      "Jan\u00a02022 - Jun\u00a02025 · 3\u00a0yrs\u00a05\u00a0mos"
     );
   });
 

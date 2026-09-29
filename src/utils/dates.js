@@ -2,6 +2,7 @@
 // with 1-based months. All math is done in UTC so DST shifts can't skew it.
 
 const DAY_MS = 24 * 60 * 60 * 1000;
+const NBSP = "\u00a0";
 
 const daysInMonth = (year, month) =>
   new Date(Date.UTC(year, month, 0)).getUTCDate();
@@ -67,5 +68,8 @@ export function dateRange(start, end) {
   if (months > 0) parts.push(`${months} ${months === 1 ? "mo" : "mos"}`);
   if (parts.length === 0) parts.push("less than a month");
   const endLabel = end ? monthName(to) : "Present";
-  return `${monthName(from)} - ${endLabel} · ${parts.join(" ")}`;
+  // Non-breaking spaces inside each date and the duration, so a narrow card
+  // only wraps at " - " or " · " instead of splitting "3 yrs 5 mos"
+  const keep = text => text.replace(/ /g, NBSP);
+  return `${keep(monthName(from))} - ${keep(endLabel)} · ${keep(parts.join(" "))}`;
 }
