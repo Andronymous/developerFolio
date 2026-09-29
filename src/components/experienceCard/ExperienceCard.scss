@@ -95,7 +95,8 @@
 
 .experience-roundedimg-wide {
   object-fit: contain;
-  padding: 0.75rem;
+  // Just enough to keep a ~3:1 wordmark's corners inside the circle
+  padding: 6%;
   box-sizing: border-box;
 }
 
