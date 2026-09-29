@@ -87,4 +87,12 @@
     font-size: 16px;
     text-align: center;
   }
+  // Images 30% smaller than desktop (250px -> 175px), same aspect ratio
+  .project-image {
+    height: 175px;
+  }
+  // Scoped so AchievementCard's own .card-image rule can't override it
+  .project-image .card-image {
+    width: 175px;
+  }
 }
