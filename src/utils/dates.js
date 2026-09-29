@@ -69,12 +69,3 @@ export function dateRange(start, end) {
   const endLabel = end ? monthName(to) : "Present";
   return `${monthName(from)} - ${endLabel} · ${parts.join(" ")}`;
 }
-
-// Whole years since the given date, recomputed on every page load
-export function yearsSince(year, month, day) {
-  const now = new Date();
-  const hadAnniversary =
-    now.getMonth() + 1 > month ||
-    (now.getMonth() + 1 === month && now.getDate() >= day);
-  return now.getFullYear() - year - (hadAnniversary ? 0 : 1);
-}

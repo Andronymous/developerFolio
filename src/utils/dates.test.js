@@ -1,4 +1,4 @@
-import {dateRange, yearsSince} from "./dates";
+import {dateRange} from "./dates";
 
 afterEach(() => {
   vi.useRealTimers();
@@ -44,15 +44,5 @@ describe("dateRange", () => {
     expect(dateRange([2026, 9, 28])).toBe(
       "Sep 2026 - Present · less than a month"
     );
-  });
-});
-
-describe("yearsSince", () => {
-  it("only counts a year once its anniversary has passed", () => {
-    vi.useFakeTimers();
-    vi.setSystemTime(new Date(2026, 4, 20, 12));
-    expect(yearsSince(2020, 5, 21)).toBe(5);
-    vi.setSystemTime(new Date(2026, 4, 21, 12));
-    expect(yearsSince(2020, 5, 21)).toBe(6);
   });
 });

@@ -35,13 +35,16 @@ import {
 import {
   TbCertificate,
   TbGitMerge,
+  TbKey,
   TbLoadBalancer,
   TbRepeat,
+  TbScanEye,
+  TbShieldLock,
   TbShieldSearch,
   TbWorldWww
 } from "react-icons/tb";
 import splashAnimation from "./assets/lottie/splashAnimation"; // Rename to your file name for custom animation
-import {dateRange, yearsSince} from "./utils/dates";
+import {dateRange} from "./utils/dates";
 
 // Splash Screen
 
@@ -90,7 +93,8 @@ const socialMediaLinks = {
 
 const skillsSection = {
   title: "Proficiency",
-  subTitle: `Over the last ${yearsSince(2020, 5, 21)} years, I have built solid skills with these tools and languages:`,
+  subTitle:
+    "Over the last 5+ years, I have built solid skills with these tools and languages:",
   skills: [
     emoji("✅ What I can help with:"),
     emoji(
@@ -152,8 +156,7 @@ const skillsSection = {
       skills: [
         {name: "Prometheus", icon: SiPrometheus},
         {name: "Grafana", icon: SiGrafana},
-        {name: "Alertmanager", icon: SiPrometheus}, // part of Prometheus
-        {name: "Loki", icon: SiGrafana} // by Grafana Labs
+        {name: "Alertmanager", icon: SiPrometheus} // part of Prometheus
       ]
     },
     {
@@ -161,7 +164,10 @@ const skillsSection = {
       skills: [
         {name: "SonarQube", icon: SiSonarqubeserver},
         {name: "Semgrep", icon: TbShieldSearch},
-        {name: "SSL/TLS", icon: TbCertificate}
+        {name: "SSL/TLS", icon: TbCertificate},
+        {name: "Container Image Scanning", icon: TbScanEye},
+        {name: "Kubernetes Security", icon: TbShieldLock},
+        {name: "Secrets Management", icon: TbKey}
       ]
     },
     {
