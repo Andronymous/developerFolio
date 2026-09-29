@@ -20,3 +20,18 @@
   background-color: $topButtonHover;
   transition: all ease-in-out 0.2s;
 }
+
+// Phones: a smaller round button in the page gutter, so it covers less of
+// the content (e.g. the last column of the skill grid) while scrolling
+@media (max-width: 768px) {
+  #topButton {
+    right: 8px;
+    bottom: 16px;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border-radius: 50%;
+    font-size: 18px;
+    box-shadow: 0 4px 12px $lightBoxShadowDarker;
+  }
+}
