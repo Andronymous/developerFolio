@@ -4,10 +4,15 @@ import {getDominantColor} from "../../utils";
 
 export default function ExperienceCard({cardInfo, isDark}) {
   const [colorArrays, setColorArrays] = useState([]);
+  const [isWideLogo, setIsWideLogo] = useState(false);
   const imgRef = createRef();
 
-  function getColorArrays() {
-    setColorArrays(getDominantColor(imgRef.current));
+  function onLogoLoad() {
+    const img = imgRef.current;
+    setColorArrays(getDominantColor(img));
+    // Wordmark logos (e.g. Karocamp) would be cropped by the round frame, so
+    // fit them inside it instead of filling it
+    setIsWideLogo(img.naturalWidth > img.naturalHeight * 1.2);
   }
 
   function rgb(values) {
@@ -40,10 +45,14 @@ export default function ExperienceCard({cardInfo, isDark}) {
         <img
           crossOrigin={"anonymous"}
           ref={imgRef}
-          className="experience-roundedimg"
+          className={
+            isWideLogo
+              ? "experience-roundedimg experience-roundedimg-wide"
+              : "experience-roundedimg"
+          }
           src={cardInfo.companylogo}
           alt={cardInfo.company}
-          onLoad={() => getColorArrays()}
+          onLoad={onLogoLoad}
         />
       </div>
       <div className="experience-text-details">
@@ -65,6 +74,17 @@ export default function ExperienceCard({cardInfo, isDark}) {
         >
           {cardInfo.date}
         </h5>
+        {cardInfo.type ? (
+          <p
+            className={
+              isDark
+                ? "experience-text-type experience-text-type-dark"
+                : "experience-text-type"
+            }
+          >
+            {cardInfo.type}
+          </p>
+        ) : null}
         <p
           className={
             isDark

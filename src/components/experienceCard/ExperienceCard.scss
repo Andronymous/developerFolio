@@ -93,6 +93,12 @@
   background-color: $lightBackground1;
 }
 
+.experience-roundedimg-wide {
+  object-fit: contain;
+  padding: 0.75rem;
+  box-sizing: border-box;
+}
+
 .experience-text-role {
   text-align: center;
   color: $textColor;
@@ -112,6 +118,18 @@
   margin: 0px;
   padding-top: 1rem;
   font-weight: 600;
+}
+
+.experience-text-type {
+  text-align: center;
+  color: $experienceTypeColor;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+  padding-top: 0.35rem;
+}
+.experience-text-type-dark {
+  color: $experienceTypeColorDark;
 }
 
 .experience-text-desc {
@@ -135,6 +153,9 @@
   }
   .experience-text-date {
     font-size: 18px;
+  }
+  .experience-text-type {
+    font-size: 15px;
   }
   .experience-roundedimg {
     width: 6.5rem;

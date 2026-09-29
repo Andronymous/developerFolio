@@ -290,6 +290,7 @@ const techStack = {
 
 const workExperiences = {
   display: true, //Set it to true to show workExperiences Section
+  // Each entry can set an optional employment type, e.g. type: "Full-time · On-site"
   experience: [
     {
       role: "Senior DevOps Engineer",
@@ -297,37 +298,92 @@ const workExperiences = {
       companylogo: new URL("./assets/images/acctech-logo.png", import.meta.url)
         .href,
       date: dateRange([2025, 6, 22]),
+      type: "Full-time · On-site",
       desc: "",
-      descBullets: []
+      descBullets: [
+        "Build and maintain multi-master Kubernetes clusters for the development, test and production environments.",
+        "Deploy and operate all company applications on Kubernetes through GitOps with Argo CD and Helm.",
+        "Operate the PostgreSQL and MongoDB databases behind the company's applications.",
+        "Run Istio service mesh for traffic management and service-to-service communication across the platform.",
+        "Own platform engineering and DevSecOps work: CI/CD pipelines with SonarQube and Semgrep, container image scanning and secrets management."
+      ]
     },
     {
-      role: "Infrastructure Team Lead",
+      role: "DevOps Consultant & Infrastructure Architect",
+      company: "EsfahanAhan",
+      companylogo: new URL(
+        "./assets/images/esfahanahan-logo.png",
+        import.meta.url
+      ).href,
+      date: dateRange([2023, 9]),
+      type: "Part-time · Hybrid",
+      desc: "",
+      descBullets: [
+        "Own the company's entire infrastructure end to end, from architecture design and server provisioning to production.",
+        "Build and maintain the CI/CD pipelines and deployment process for all company applications.",
+        "Run server maintenance, updates and backup and restore, keeping production services stable and recoverable.",
+        "Provide and maintain the development and deployment tooling the development team relies on day to day."
+      ]
+    },
+    {
+      role: "Senior DevOps Course Author & Workshop Instructor",
+      company: "Karocamp",
+      companylogo: new URL("./assets/images/karocamp-logo.png", import.meta.url)
+        .href,
+      date: dateRange([2024, 2]),
+      type: "Part-time",
+      desc: "",
+      descBullets: [
+        "Wrote and teach a full DevOps bootcamp: Linux, networking, Bash scripting, Ansible, Docker, Git and GitLab, GitOps, Kubernetes and monitoring."
+      ]
+    },
+    {
+      role: "Infrastructure Team Lead & DevOps Engineer",
       company: "Zamin",
       companylogo: new URL("./assets/images/zamin.png", import.meta.url).href,
-      date: dateRange([2022, 2], [2025, 6, 21]),
+      date: dateRange([2022, 1, 21], [2025, 6, 21]),
+      type: "Full-time · On-site",
       desc: "",
-      descBullets: []
+      descBullets: [
+        "Led the infrastructure team and owned project management and the company's entire infrastructure.",
+        "Built and operated dedicated Kubernetes clusters for individual customers, from provisioning with containerd through upgrades and troubleshooting.",
+        "Built CI/CD pipelines with GitLab CI/CD and Jenkins, using Nexus for artifacts and container images.",
+        "Set up monitoring and alerting with Prometheus, Grafana and Alertmanager.",
+        "Managed PostgreSQL and MongoDB databases for production services.",
+        "Administered Linux servers and production traffic with Nginx, HAProxy, DNS and SSL/TLS."
+      ]
     },
     {
       role: "Senior Android Developer",
       company: "Zamin",
       companylogo: new URL("./assets/images/zamin.png", import.meta.url).href,
-      date: dateRange([2017, 12], [2022, 2]),
-      desc: ""
+      date: dateRange([2017, 12], [2022, 1, 20]),
+      type: "Full-time · On-site",
+      desc: "",
+      descBullets: [
+        "Developed and maintained the company's Android apps in Java and Kotlin, including Balonet.",
+        "Set up CI/CD for Android builds and took on the first DevOps tasks, which led to the move into infrastructure."
+      ]
     },
     {
       role: "Co-Founder and Senior Android Developer",
       company: "Armin",
       companylogo: new URL("./assets/images/armin.png", import.meta.url).href,
       date: dateRange([2016, 9], [2017, 12]),
-      desc: ""
+      type: "Full-time · On-site",
+      desc: "",
+      descBullets: [
+        "Co-founded the company and built its Android app, Iropeyk."
+      ]
     },
     {
       role: "Android Developer",
-      company: "Arad",
+      company: "Arad ITC",
       companylogo: new URL("./assets/images/arad.png", import.meta.url).href,
       date: dateRange([2016, 2], [2016, 6]),
-      desc: ""
+      type: "Part-time",
+      desc: "",
+      descBullets: []
     }
   ]
 };
