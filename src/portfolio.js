@@ -70,7 +70,7 @@ const greeting = {
     "Having spent years on the developer side, I know what teams need from their platform. I enjoy working closely with developers, designers, QA and product managers to ship things people actually use."
   ),
 
-  resumeLink: "https://andronymous.ir/resume-en.pdf",
+  resumeLink: "/resume-en.pdf",
   displayGreeting: true // Set false to hide this section, defaults to true
 };
 
