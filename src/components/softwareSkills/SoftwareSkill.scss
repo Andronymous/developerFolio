@@ -1,16 +1,22 @@
 @import "../../_globalColor";
 
 .skill-group {
-  margin-bottom: 24px;
+  margin-bottom: 28px;
+}
+
+.skill-group:last-child {
+  margin-bottom: 0;
 }
 
 .skill-group-title {
-  margin: 0 0 12px;
-  font-size: 15px;
-  font-weight: 600;
+  margin: 0 0 14px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: $subTitle;
+  text-align: left;
+  color: $skillGroupTitle;
 }
 
 .dev-icons {
@@ -23,6 +29,7 @@
 }
 
 .software-skill-inline {
+  min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,6 +48,9 @@
   color: $subTitle;
   font-size: 13px;
   line-height: 1.3;
+  // Soft hyphens in long labels only apply on narrow phones (see below)
+  hyphens: none;
+  overflow-wrap: anywhere;
   transition: color 0.2s ease;
 }
 
@@ -53,7 +63,7 @@
 
 .dark-mode {
   .skill-group-title {
-    color: $textColorDark;
+    color: $skillGroupTitleDark;
   }
   .software-skill-icon {
     color: $skillIconColorDark;
@@ -70,8 +80,12 @@
 }
 
 @media (max-width: 768px) {
+  .skill-group {
+    margin-bottom: 24px;
+  }
   .skill-group-title {
-    text-align: center;
+    margin-bottom: 12px;
+    font-size: 16px;
   }
   .dev-icons {
     grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
@@ -82,6 +96,33 @@
     height: 2.25rem;
   }
   .software-skill-inline > p {
+    margin-top: 6px;
     font-size: 12px;
+  }
+}
+
+// Phones: a fixed 4-column grid. The groups hold 3, 4 or 7 skills, so rows
+// fill evenly (7 = 4 + 3) instead of leaving a single icon on its own row.
+@media (max-width: 480px) {
+  .dev-icons {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px 6px;
+  }
+  .software-skill-icon {
+    width: 2rem;
+    height: 2rem;
+  }
+  .software-skill-inline > p {
+    font-size: 11.5px;
+  }
+}
+
+@media (max-width: 400px) {
+  .dev-icons {
+    column-gap: 4px;
+  }
+  .software-skill-inline > p {
+    font-size: 11px;
+    hyphens: manual;
   }
 }
