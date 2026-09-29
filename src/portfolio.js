@@ -41,34 +41,7 @@ import {
   TbWorldWww
 } from "react-icons/tb";
 import splashAnimation from "./assets/lottie/splashAnimation"; // Rename to your file name for custom animation
-
-// Month range with a LinkedIn-style duration, counting both the first and the
-// last month, e.g. "Dec 2017 - Feb 2022 · 4 yrs 3 mos". Without an end month the
-// range runs to the current month and ends in "Present", so it never goes stale.
-function dateRange([startYear, startMonth], end) {
-  const now = new Date();
-  const [endYear, endMonth] = end || [now.getFullYear(), now.getMonth() + 1];
-  const total = (endYear - startYear) * 12 + (endMonth - startMonth) + 1;
-  const years = Math.floor(total / 12);
-  const months = total % 12;
-  const parts = [];
-  if (years > 0) parts.push(`${years} ${years === 1 ? "yr" : "yrs"}`);
-  if (months > 0) parts.push(`${months} ${months === 1 ? "mo" : "mos"}`);
-  const monthName = (year, month) =>
-    new Date(year, month - 1).toLocaleString("en-US", {month: "short"}) +
-    ` ${year}`;
-  const endLabel = end ? monthName(endYear, endMonth) : "Present";
-  return `${monthName(startYear, startMonth)} - ${endLabel} · ${parts.join(" ")}`;
-}
-
-// Whole years since the given date, recomputed on every page load
-function yearsSince(year, month, day) {
-  const now = new Date();
-  const hadAnniversary =
-    now.getMonth() + 1 > month ||
-    (now.getMonth() + 1 === month && now.getDate() >= day);
-  return now.getFullYear() - year - (hadAnniversary ? 0 : 1);
-}
+import {dateRange, yearsSince} from "./utils/dates";
 
 // Splash Screen
 
@@ -321,8 +294,9 @@ const workExperiences = {
     {
       role: "Senior DevOps Engineer",
       company: "Acctech Technology",
-      companylogo: new URL("./assets/images/acctech.png", import.meta.url).href,
-      date: dateRange([2025, 6]),
+      companylogo: new URL("./assets/images/acctech-logo.png", import.meta.url)
+        .href,
+      date: dateRange([2025, 6, 22]),
       desc: "",
       descBullets: []
     },
@@ -330,7 +304,7 @@ const workExperiences = {
       role: "Infrastructure Team Lead",
       company: "Zamin",
       companylogo: new URL("./assets/images/zamin.png", import.meta.url).href,
-      date: dateRange([2022, 2], [2025, 6]),
+      date: dateRange([2022, 2], [2025, 6, 21]),
       desc: "",
       descBullets: []
     },

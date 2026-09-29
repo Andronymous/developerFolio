@@ -89,6 +89,8 @@
   height: 8rem;
   box-shadow: 0 0.5rem 1rem $lightBoxShadowDarker;
   border-radius: 50%;
+  // Transparent logos (e.g. Acctech) would otherwise sit on the dark card
+  background-color: $lightBackground1;
 }
 
 .experience-text-role {
