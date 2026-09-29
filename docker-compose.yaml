@@ -2,7 +2,7 @@
 # external "proxy" network (create it once with: docker network create proxy).
 services:
   portfolio:
-    image: hub.andronymous.ir/devfolio:1.3.0
+    image: hub.andronymous.ir/devfolio:1.4.0
     build: .
     container_name: portfolio
     networks:
