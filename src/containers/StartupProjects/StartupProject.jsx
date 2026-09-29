@@ -4,6 +4,10 @@ import {bigProjects} from "../../portfolio";
 import {Fade} from "../../components/reveal/Reveal";
 import StyleContext from "../../contexts/StyleContext";
 
+// A word joiner after the dash keeps year ranges like "2013–2016" on one line
+const keepYearRanges = text =>
+  text && text.replace(/(\d)–(\d)/g, "$1–\u2060$2");
+
 export default function StartupProject() {
   function openUrlInNewTab(url) {
     if (!url) {
@@ -63,7 +67,7 @@ export default function StartupProject() {
                         isDark ? "dark-mode card-subtitle" : "card-subtitle"
                       }
                     >
-                      {project.projectDesc}
+                      {keepYearRanges(project.projectDesc)}
                     </p>
                     {project.footerLink ? (
                       <div className="project-card-footer">
