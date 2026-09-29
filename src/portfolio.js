@@ -81,7 +81,7 @@ const greeting = {
 
 const socialMediaLinks = {
   github: "https://github.com/Andronymous",
-  linkedin: "https://www.linkedin.com/in/saeed-mohammad-ali-rajab-658025100/",
+  linkedin: "https://www.linkedin.com/in/andronymous/",
   gmail: "saeedmrdev@gmail.com",
   stackoverflow: "https://stackoverflow.com/users/4008227/andronymous",
   // Instagram, Twitter and Kaggle are also supported in the links!
@@ -206,7 +206,7 @@ const educationInfo = {
   display: true, // Set false to hide this section, defaults to true
   schools: [
     {
-      schoolName: "SheikhBahaeei University",
+      schoolName: "Sheikh Bahaee University",
       logo: new URL(
         "./assets/images/SheikhBahaeiUniversityLogo.png",
         import.meta.url
