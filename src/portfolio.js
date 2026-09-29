@@ -144,7 +144,7 @@ const skillsSection = {
     {
       group: "Linux & Scripting",
       skills: [
-        {name: "Linux Administration", icon: SiLinux},
+        {name: "Linux Admin\u00adistration", icon: SiLinux},
         {name: "Bash / Shell Scripting", icon: SiGnubash},
         {name: "Python", icon: SiPython},
         {name: "YAML", icon: SiYaml}
