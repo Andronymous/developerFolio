@@ -61,7 +61,7 @@ const greeting = {
   username: "Saeed",
   title: "Hi, I'm Saeed", // Greeting.jsx appends an animated 👋
   subTitle1: emoji(
-    "I'm a Senior DevOps Engineer with a background in Android development."
+    "I'm a Senior DevOps & Platform Engineer with a background in Android development."
   ),
   subTitle2: emoji(
     "I build and run the systems that take software from a commit to production reliably: Linux servers, containers on Docker and Kubernetes, CI/CD pipelines, and the monitoring that keeps it all healthy."
