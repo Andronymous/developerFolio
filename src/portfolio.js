@@ -402,12 +402,13 @@ const openSource = {
 const bigProjects = {
   title: "Projects",
   subtitle:
-    "Some of the projects that I did independently or was part of the development team",
+    "Android apps I built at companies and as a freelancer, before moving into DevOps.",
   projects: [
     {
       image: new URL("./assets/images/balonet.png", import.meta.url).href,
       projectName: "Balonet",
-      projectDesc: "",
+      projectDesc:
+        "Android app developed at Zamin, where I worked on the Android team and later ran the infrastructure behind it.",
       footerLink: [
         {
           name: "Visit Website",
@@ -419,7 +420,8 @@ const bigProjects = {
     {
       image: new URL("./assets/images/noonet.png", import.meta.url).href,
       projectName: "Noonet",
-      projectDesc: "",
+      projectDesc:
+        "Android app developed for Irikco, published on Cafe Bazaar.",
       footerLink: [
         {
           name: "Download",
@@ -429,8 +431,9 @@ const bigProjects = {
     },
     {
       image: new URL("./assets/images/ipeyk.png", import.meta.url).href,
-      projectName: "Ipeyk",
-      projectDesc: "",
+      projectName: "Iropeyk",
+      projectDesc:
+        "Android app of Armin, the startup I co-founded, where I led its Android development.",
       footerLink: [
         {
           name: "Visit Website",
@@ -441,17 +444,18 @@ const bigProjects = {
     {
       image: new URL("./assets/images/alchemist.png", import.meta.url).href,
       projectName: "Alchemist",
-      projectDesc: ""
+      projectDesc: "Freelance Android project, 2016–2017."
     },
     {
       image: new URL("./assets/images/arian.png", import.meta.url).href,
       projectName: "Arian",
-      projectDesc: ""
+      projectDesc:
+        "Freelance Android project for Isfahan University of Medical Sciences, 2015–2016."
     },
     {
       image: new URL("./assets/images/ranandesho.png", import.meta.url).href,
       projectName: "Ranandesho",
-      projectDesc: "",
+      projectDesc: "Freelance Android app published on Cafe Bazaar, 2013–2016.",
       footerLink: [
         {
           name: "Download",
@@ -462,12 +466,13 @@ const bigProjects = {
     {
       image: new URL("./assets/images/sib.png", import.meta.url).href,
       projectName: "Sib",
-      projectDesc: ""
+      projectDesc:
+        "Freelance Android project for Isfahan University of Medical Sciences, 2014–2015."
     },
     {
       image: new URL("./assets/images/zabdar.png", import.meta.url).href,
       projectName: "Zabdar",
-      projectDesc: "",
+      projectDesc: "Freelance Android app published on Cafe Bazaar, 2014–2015.",
       footerLink: [
         {
           name: "Download",
